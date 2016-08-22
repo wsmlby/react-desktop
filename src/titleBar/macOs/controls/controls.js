@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Close from './close';
 import Minimize from './minimize';
 import Resize from './resize';
-
+import Lock from './lock';
 var styles = {
   controls: {
     WebkitUserSelect: 'none',
@@ -24,7 +24,9 @@ class Controls extends Component {
     onCloseClick: PropTypes.func,
     onMinimizeClick: PropTypes.func,
     onMaximizeClick: PropTypes.func,
-    onResizeClick: PropTypes.func
+    onResizeClick: PropTypes.func,
+    onLockClick: PropTypes.func,
+    onUnlockClick: PropTypes.func
   };
 
   constructor() {
@@ -49,6 +51,7 @@ class Controls extends Component {
           onMaximizeClick={this.props.onMaximizeClick}
           showIcon={this.state.isOver}
         />
+      <Lock onLockClick={this.props.onLockClick} onUnlockClick={this.props.onUnlockClick} showIcon={this.state.isOver}/>
       </div>
     );
   }
