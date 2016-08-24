@@ -21,15 +21,22 @@ class Controls extends Component {
     onRestoreDownClick: PropTypes.func,
     onMaximizeClick: PropTypes.func,
     onLockClick: PropTypes.func,
-    onUnlockClick: PropTypes.func
+    onUnlockClick: PropTypes.func,
+    showMinimize: PropTypes.bool,
+    showMaximize: PropTypes.bool,
+    showLock: PropTypes.bool,
   };
-
+  static defaultProps = {
+    showMinimize: false,
+    showMaximize: false,
+    showLock: false,
+  };
   render() {
     return (
       <div style={styles.controls}>
-        <Lock onLockClick={this.props.onLockClick} onUnlockClick={this.props.onUnlockClick} ref="lock"/>
-        <Minimize onClick={this.props.onMinimizeClick} ref="minimize"/>
-        <Maximize onMaximizeClick={this.props.onMaximizeClick} onRestoreDownClick={this.props.onRestoreDownClick} ref="maximize"/>
+        {this.props.showLock ? <Lock onLockClick={this.props.onLockClick} onUnlockClick={this.props.onUnlockClick} ref="lock"/> : null}
+        {this.props.showMinimize? <Minimize onClick={this.props.onMinimizeClick} ref="minimize"/>: null}
+        {this.props.showMaximize? <Maximize onMaximizeClick={this.props.onMaximizeClick} onRestoreDownClick={this.props.onRestoreDownClick} ref="maximize"/> :null}
         <Close onClick={this.props.onCloseClick} ref="close"/>
       </div>
     );
