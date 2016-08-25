@@ -23,7 +23,12 @@ class TitleBar extends Component {
     onCloseClick: PropTypes.func,
     onMinimizeClick: PropTypes.func,
     onMaximizeClick: PropTypes.func,
-    onRestoreDownClick: PropTypes.func
+    onRestoreDownClick: PropTypes.func,
+    onLockClick: PropTypes.func,
+    onUnlockClick: PropTypes.func,
+    showMinimize: PropTypes.bool,
+    showMaximize: PropTypes.bool,
+    showLock: PropTypes.bool,
   };
 
   static childContextTypes = {
@@ -48,10 +53,15 @@ class TitleBar extends Component {
     delete props.onMinimizeClick;
     delete props.onMaximizeClick;
     delete props.onRestoreDownClick;
+    delete props.onLockClick;
+    delete props.onUnlockClick;
+    delete props.showMinimize;
+    delete props.showMaximize;
+    delete props.showLock;
 
     let componentStyle = { ...styles.titleBar, ...style };
     let titleStyle = styles.title;
-    
+
     if (!isWindowFocused && this.context.theme !== 'dark') {
       titleStyle = { ...titleStyle, ...styles.unfocusedTitle };
     }
